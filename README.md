@@ -1,7 +1,7 @@
 # Gree AC Custom Component for Home Assistant
 Disclaimer: because I'm lazy, this README.md was mostly generated with ChatGPT.
 
-This integration is basically the official Gree integration modified to disable the audible feedback beeps from the air conditioner unit, thanks to a patched `greeclimate` library from [@namezys](https://github.com/namezys).
+This integration is basically the official Gree integration modified to disable the audible feedback beeps from the air conditioner unit, thanks to a patched [greeclimate](https://github.com/namezys/greeclimate/tree/beep_disable) library from [@namezys](https://github.com/namezys).
 
 ## Features
 
@@ -51,7 +51,7 @@ Before you start, ensure you have the following prerequisites:
 
 ## Acknowledgements
 
-- This custom component incorporates the `greeclimate` library patched by [@namezys](https://github.com/namezys) to disable the beeps from the AC unit.
+- This custom component incorporates the [greeclimate](https://github.com/namezys/greeclimate/tree/beep_disable) library patched by [@namezys](https://github.com/namezys) to disable the beeps from the AC unit.
 - Original Gree integration for Home Assistant.
 
 ## Support
