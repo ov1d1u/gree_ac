@@ -1,0 +1,11 @@
+{
+  "domain": "gree_ac",
+  "name": "Gree AC",
+  "codeowners": ["@cmroche"],
+  "config_flow": true,
+  "dependencies": ["network"],
+  "documentation": "https://www.home-assistant.io/integrations/gree",
+  "iot_class": "local_polling",
+  "loggers": ["greeclimate"],
+  "version": "2025.5.18"
+}
