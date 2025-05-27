@@ -1,0 +1,93 @@
+diff --git a/custom_components/gree_ac/climate.py b/custom_components/gree_ac/climate.py
+index e3549973f43..95f8aa9f836 100644
+--- a/custom_components/gree_ac/climate.py
++++ b/custom_components/gree_ac/climate.py
+@@ -5,7 +5,7 @@ from __future__ import annotations
+ import logging
+ from typing import Any
+ 
+-from greeclimate.device import (
++from .greeclimate.device import (
+     TEMP_MAX,
+     TEMP_MAX_F,
+     TEMP_MIN,
+diff --git a/custom_components/gree_ac/config_flow.py b/custom_components/gree_ac/config_flow.py
+index 5e118088916..5f57e7d83e1 100644
+--- a/custom_components/gree_ac/config_flow.py
++++ b/custom_components/gree_ac/config_flow.py
+@@ -1,6 +1,6 @@
+ """Config flow for Gree."""
+ 
+-from greeclimate.discovery import Discovery
++from .greeclimate.discovery import Discovery
+ 
+ from homeassistant.components.network import async_get_ipv4_broadcast_addresses
+ from homeassistant.core import HomeAssistant
+diff --git a/custom_components/gree_ac/const.py b/custom_components/gree_ac/const.py
+index 6c1f8f954c9..5af2e1132bd 100644
+--- a/custom_components/gree_ac/const.py
++++ b/custom_components/gree_ac/const.py
+@@ -2,9 +2,9 @@
+ 
+ DISCOVERY_SCAN_INTERVAL = 300
+ DISCOVERY_TIMEOUT = 8
+-DISPATCH_DEVICE_DISCOVERED = "gree_device_discovered"
++DISPATCH_DEVICE_DISCOVERED = "gree_ac_device_discovered"
+ 
+-DOMAIN = "gree"
++DOMAIN = "gree_ac"
+ 
+ FAN_MEDIUM_LOW = "medium low"
+ FAN_MEDIUM_HIGH = "medium high"
+diff --git a/custom_components/gree_ac/coordinator.py b/custom_components/gree_ac/coordinator.py
+index 0d697398fc0..d1301730f17 100644
+--- a/custom_components/gree_ac/coordinator.py
++++ b/custom_components/gree_ac/coordinator.py
+@@ -8,10 +8,10 @@ from datetime import datetime, timedelta
+ import logging
+ from typing import Any
+ 
+-from greeclimate.device import Device, DeviceInfo
+-from greeclimate.discovery import Discovery, Listener
+-from greeclimate.exceptions import DeviceNotBoundError, DeviceTimeoutError
+-from greeclimate.network import Response
++from .greeclimate.device import Device, DeviceInfo
++from .greeclimate.discovery import Discovery, Listener
++from .greeclimate.exceptions import DeviceNotBoundError, DeviceTimeoutError
++from .greeclimate.network import Response
+ 
+ from homeassistant.config_entries import ConfigEntry
+ from homeassistant.core import HomeAssistant
+diff --git a/custom_components/gree_ac/manifest.json b/custom_components/gree_ac/manifest.json
+index dba8cd6077c..46112b7bf35 100644
+--- a/custom_components/gree_ac/manifest.json
++++ b/custom_components/gree_ac/manifest.json
+@@ -1,11 +1,11 @@
+ {
+-  "domain": "gree",
+-  "name": "Gree Climate",
+-  "codeowners": ["@cmroche"],
++  "domain": "gree_ac",
++  "name": "Gree AC",
++  "codeowners": ["@ov1d1u"],
+   "config_flow": true,
+   "dependencies": ["network"],
+   "documentation": "https://www.home-assistant.io/integrations/gree",
+   "iot_class": "local_polling",
+   "loggers": ["greeclimate"],
+-  "requirements": ["greeclimate==2.1.0"]
++  "version": "2025.5.27"
+ }
+diff --git a/custom_components/gree_ac/switch.py b/custom_components/gree_ac/switch.py
+index ab138ea3be6..cfa5297f2e9 100644
+--- a/custom_components/gree_ac/switch.py
++++ b/custom_components/gree_ac/switch.py
+@@ -6,7 +6,7 @@ from collections.abc import Callable
+ from dataclasses import dataclass
+ from typing import Any
+ 
+-from greeclimate.device import Device
++from .greeclimate.device import Device
+ 
+ from homeassistant.components.switch import (
+     SwitchDeviceClass,
