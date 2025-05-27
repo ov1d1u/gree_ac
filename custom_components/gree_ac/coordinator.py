@@ -60,20 +60,11 @@ class DeviceDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             always_update=False,
         )
         self.device = device
-        print(f"Device add handler: {self.device}")
         self.device.add_handler(Response.RESULT, self.device_state_updated)
-        print(f"Device add handler: {self.device}")
 
         self._error_count: int = 0
         self._last_response_time: datetime = utcnow()
         self._last_error_time: datetime | None = None
-
-        _LOGGER.debug(
-            "Gree device %s at %s:%i initialized",
-            self.device.device_info.name,
-            self.device.device_info.ip,
-            self.device.device_info.port,
-        )
 
     def device_state_updated(self, *args: Any) -> None:
         """Handle device state updates."""
@@ -173,13 +164,8 @@ class DiscoveryService(Listener):
             device.device_info.ip,
             device.device_info.port,
         )
-        print(
-            f"Adding Gree device {device.device_info.name} at {device.device_info.ip}:{device.device_info.port}"
-        )
         coordo = DeviceDataUpdateCoordinator(self.hass, self.entry, device)
-        print(f"Processing device: {device}")
         self.entry.runtime_data.coordinators.append(coordo)
-        print(f"Coordinators: {self.entry.runtime_data.coordinators}")
         await coordo.async_refresh()
 
         async_dispatcher_send(self.hass, DISPATCH_DEVICE_DISCOVERED, coordo)
