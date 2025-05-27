@@ -6,10 +6,10 @@ from asyncio import Task
 from asyncio.events import AbstractEventLoop
 from ipaddress import IPv4Address
 
-from greeclimate.cipher import CipherV1
-from greeclimate.device import DeviceInfo
-from greeclimate.network import BroadcastListenerProtocol, IPAddr
-from greeclimate.taskable import Taskable
+from .cipher import CipherV1
+from .device import DeviceInfo
+from .network import BroadcastListenerProtocol, IPAddr
+from .taskable import Taskable
 
 _LOGGER = logging.getLogger(__name__)
 
