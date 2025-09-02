@@ -49,6 +49,10 @@ Before you start, ensure you have the following prerequisites:
    - Click "Add Integration" and search for "Gree AC."
    - Follow the configuration instructions to set up your Gree AC units.
 
+## For developers: updating the code
+
+Clone the [Home Assistant Core](https://github.com/home-assistant/core) repository and copy the files under `homeassistant/components/gree` into this repository's `custom_components/gree_ac` directory. Run `git apply gree_silent.patch` to apply the patches and commit the changes, if needed.
+
 ## Acknowledgements
 
 - This custom component incorporates the [greeclimate](https://github.com/namezys/greeclimate/tree/beep_disable) library patched by [@namezys](https://github.com/namezys) to disable the beeps from the AC unit.
